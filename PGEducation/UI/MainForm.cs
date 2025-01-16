@@ -20,6 +20,15 @@ namespace PGEducation.UI
             InitializeComponent();
 
             _sqlTableManager = new SqlTableManager();
+
+            TestConnect();
+        }
+
+        private void TestConnect()
+        {
+            _sqlTableManager.OpenConnection();
+            ClientDataGridView.DataSource = _sqlTableManager.PerformCommand("SELECT * FROM clients");
+            _sqlTableManager.CloseConnection();
         }
     }
 }
